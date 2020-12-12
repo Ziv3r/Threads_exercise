@@ -20,7 +20,9 @@ class Analyzer:
         self.list_of_matchers[0].find_matches()
 
         for key in self.list_of_matchers[0].word_to_locations.keys():
-            print(key, '->', self.list_of_matchers[0].word_to_locations[key].to_string())
+            print(key, '->')
+            for offset in self.list_of_matchers[0].word_to_locations[key]:
+                print (offset.to_string())
 
 
         # execute the aggregator with the list of the matchers

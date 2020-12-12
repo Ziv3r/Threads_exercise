@@ -21,9 +21,9 @@ class Matcher:
                     line_offset = self.starting_line
                     char_offset = line.find(word) + self.starting_char
                     offset = OffsetData(line_offset, char_offset)
-                    self.word_to_locations[word] = offset
+                    if word not in self.word_to_locations:
+                        self.word_to_locations[word] = []
+
+                    self.word_to_locations[word].append(offset)
 
             self.starting_char += len(line)
-
-    def print_dict(self):
-        print(self.word_to_locations)
